@@ -35,19 +35,24 @@ function Productlist({ product }) {
     };
 
     const renderSlices = (type, color, quantity) => {
-        return Array.from({ length: quantity }, (_, i) => (
-            <div
-                key={i}
-                style={{
-                    width: '100px',
-                    height: '10px',
-                    backgroundColor: color,
-                    margin: '2px auto',
-                    border: '1px solid #ccc',
-                }}
-            />
-        ));
+        const slices = [];
+        for (let i = 0; i < quantity; i++) {
+            slices.push(
+                <div
+                    key={i}
+                    style={{
+                        width: '100px',
+                        height: '10px',
+                        backgroundColor: color,
+                        margin: '2px auto',
+                        border: '1px solid #ccc',
+                    }}
+                />
+            );
+        }
+        return slices;
     };
+    
 
     return (
         <div className='bg-red-200 p-4'>
