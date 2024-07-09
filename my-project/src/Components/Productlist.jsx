@@ -34,6 +34,21 @@ function Productlist({ product }) {
         setTotalPrice(total);
     };
 
+    const renderSlices = (type, color, quantity) => {
+        return Array.from({ length: quantity }, (_, i) => (
+            <div
+                key={i}
+                style={{
+                    width: '100px',
+                    height: '10px',
+                    backgroundColor: color,
+                    margin: '2px auto',
+                    border: '1px solid #ccc',
+                }}
+            />
+        ));
+    };
+
     return (
         <div className='bg-red-200 p-4'>
             <div className="mt-5 mb-5 text-center">
@@ -62,15 +77,9 @@ function Productlist({ product }) {
                         >
                             -
                         </button>
-                        <div
-                            style={{
-                                width: '50px',
-                                height: '15px',
-                                backgroundColor: productItem.color,
-                                margin: '0 10px',
-                                border: '1px solid #ccc',
-                            }}
-                        />
+                        <div>
+                            {renderSlices(productItem.type, productItem.color, productItem.quantity || 0)}
+                        </div>
                         <button 
                             className='bg-red-600 text-yellow-400 rounded-lg h-10 w-10' 
                             onClick={() => incrementQuantity(productIndex)}
